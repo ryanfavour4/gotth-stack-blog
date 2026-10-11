@@ -15,7 +15,7 @@ func main() {
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		views.Home().Render(r.Context(), w)
+		views.Home([]views.BlogPost{}).Render(r.Context(), w)
 	})
 
 	http.Handle("/static/", http.StripPrefix(
@@ -23,7 +23,7 @@ func main() {
 		http.FileServer(http.Dir("./static")),
 	))
 
-	fmt.Println("Server running on http://localhost:8080")
+	fmt.Println("Server running on http://localhost:8888")
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8888", nil)
 }
